@@ -1,0 +1,40 @@
+Opções de análise possíveis para o nosso DW: (site medium)
+
+1.Sales Reporting: This report can be used to track sales by customer, employees, products and suppliers.
+
+2. Request fulfillment Report: This report can be used to track the order by how much time it has taken to get delivered to the customer and it can be analyzed to see if it can be improved.
+
+3.Employee level reporting: This report can be used to track the performance of the employees and see how it can be improved by either providing rewards to best performers or giving training to the worst performers or both.
+
+4.Order distribution & Product inventory analysis: This report can be used to find order distributed to customers across the world, track inventory, Order level, Re-order level of the company for the betterment.
+
+These are some of the potential business areas that can be improved to deal business with efficient management related to sales, time and improves the profit as well.
+
+Due to limited requirement, the business driver that will be analyzed is (...) Exemplo: Order distribution & Product inventory analysis. 
+
+-> ESCOLHIDO: - analisar interações da empresa NorthWind com o exterior 
+			  - não é objetivo analisar inventário, por exemplo, interior à empresa
+			  - apenas se vai analisar o funcionário (interno) por uma questão de estatísticas e prémios; e produtos porque é necessário para ver o que mais sai e etc
+			  - shippers vai ficar uma dimensão mt simples, e apenas servirá para ver quem foi a transportadora (estatisticas de quem mais transporta) --> não é DEGENERATED DIMENSION pq normalmente são códigos e aqui temos id + nome 
+			  - calendario: role-playing dimension
+
+
+---------------------------------------------------------------------
+
+
+- número de encomendas por hora (e parte do dia)
+- número de encomendas por mês
+- número de encomendas por dia da semana 
+- numero de encomendas semana vs fim de semana
+- número de encomendas por trimestre
+- número de encomendas por semestre
+- número de encomendas por cidade (região)
+- número de encomendas por tipo de produto
+- número de encomendas por funcionário
+- número de encomendas por preço Total
+- número de encomendas por cidade de destino (cliente)
+- número de encomendas por país de destino (cliente)
+- número de encomendas por empresa de destino (cliente) -> empresas que mais encomendam
+- número de encomendas por fornecedor
+- número de vendas de um funcionário por região?
+[EM CONSTRUÇÃO]
