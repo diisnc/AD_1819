@@ -431,7 +431,7 @@
     <created_date>2018/12/22 16:56:36.279</created_date>
     <modified_user>-</modified_user>
     <modified_date>2018/12/22 16:56:36.279</modified_date>
-    <key_for_session_key />
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
@@ -493,28 +493,28 @@
   </connection>
   <order>
     <hop>
-      <from>Generate from start date</from>
-      <to>Day In Dimension</to>
+      <from>Generate from Start Date </from>
+      <to>Day in Dimension </to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Day In Dimension</from>
+      <from>Day in Dimension </from>
       <to>Set Date</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Set Date</from>
-      <to>Calculated Fields</to>
+      <to>CalculatedFields</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Calculated Fields</from>
-      <to>Microsoft Excel Output</to>
+      <from>CalculatedFields</from>
+      <to>Table output</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>Generate from start date</name>
+    <name>Generate from Start Date </name>
     <type>RowGenerator</type>
     <description />
     <distribute>Y</distribute>
@@ -532,13 +532,13 @@
         <currency />
         <decimal />
         <group />
-        <nullif />
+        <nullif>2006/01/01 00:00:00</nullif>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
       </field>
     </fields>
-    <limit>1000</limit>
+    <limit>600</limit>
     <never_ending>N</never_ending>
     <interval_in_ms>5000</interval_in_ms>
     <row_time_field>now</row_time_field>
@@ -552,12 +552,12 @@
     </remotesteps>
     <GUI>
       <xloc>208</xloc>
-      <yloc>112</yloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Day In Dimension</name>
+    <name>Day in Dimension </name>
     <type>Sequence</type>
     <description />
     <distribute>Y</distribute>
@@ -586,7 +586,7 @@
     </remotesteps>
     <GUI>
       <xloc>336</xloc>
-      <yloc>112</yloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -603,7 +603,7 @@
     </partitioning>
     <formula>
       <field_name>DimensionDate</field_name>
-      <formula_string>date(year([FirstDate]); month([FirstDate]); day([FirstDate]) + [DayInDimension] - 1)</formula_string>
+      <formula_string>date(year([FirstDate]); month([FirstDate]); day([FirstDate]) + [DayinDimension] -1 )</formula_string>
       <value_type>Date</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
@@ -618,12 +618,12 @@
     </remotesteps>
     <GUI>
       <xloc>464</xloc>
-      <yloc>112</yloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Calculated Fields</name>
+    <name>CalculatedFields</name>
     <type>Formula</type>
     <description />
     <distribute>Y</distribute>
@@ -636,7 +636,15 @@
     <formula>
       <field_name>idData</field_name>
       <formula_string>Year([DimensionDate])*10000 + Month([DimensionDate])*100 + Day([DimensionDate])</formula_string>
-      <value_type>Integer</value_type>
+      <value_type>Number</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field />
+    </formula>
+    <formula>
+      <field_name>data</field_name>
+      <formula_string>TEXT(year([DimensionDate])) &amp; TEXT("-") &amp; TEXT(month([DimensionDate])) &amp; TEXT("-")  &amp; TEXT(day([DimensionDate]))</formula_string>
+      <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <replace_field />
@@ -698,13 +706,13 @@
     </remotesteps>
     <GUI>
       <xloc>592</xloc>
-      <yloc>112</yloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Microsoft Excel Output</name>
-    <type>ExcelOutput</type>
+    <name>Table output</name>
+    <type>TableOutput</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -713,54 +721,57 @@
       <method>none</method>
       <schema_name />
     </partitioning>
-    <header>Y</header>
-    <footer>N</footer>
-    <encoding />
-    <append>N</append>
-    <add_to_result_filenames>Y</add_to_result_filenames>
-    <file>
-      <name>C:\Users\Diana\Desktop\file.xls</name>
-      <extention>xls</extention>
-      <do_not_open_newfile_init>N</do_not_open_newfile_init>
-      <create_parent_folder>N</create_parent_folder>
-      <split>N</split>
-      <add_date>Y</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format>yyyy/MM/dd HH:mm:ss</date_time_format>
-      <sheetname>Sheet1</sheetname>
-      <autosizecolums>N</autosizecolums>
-      <nullisblank>N</nullisblank>
-      <protect_sheet>N</protect_sheet>
-      <password>Encrypted </password>
-      <splitevery>0</splitevery>
-      <usetempfiles>N</usetempfiles>
-      <tempdirectory />
-    </file>
-    <template>
-      <enabled>N</enabled>
-      <append>N</append>
-      <filename>template.xls</filename>
-    </template>
+    <connection>ARETcon</connection>
+    <schema>arearet</schema>
+    <table>AR_Cleanup_Data</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field />
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field />
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field />
     <fields>
+      <field>
+        <column_name>idData</column_name>
+        <stream_name>idData</stream_name>
+      </field>
+      <field>
+        <column_name>diaSemana</column_name>
+        <stream_name>diaSemana</stream_name>
+      </field>
+      <field>
+        <column_name>mes</column_name>
+        <stream_name>mes</stream_name>
+      </field>
+      <field>
+        <column_name>ano</column_name>
+        <stream_name>ano</stream_name>
+      </field>
+      <field>
+        <column_name>trimestre</column_name>
+        <stream_name>trimestre</stream_name>
+      </field>
+      <field>
+        <column_name>semestre</column_name>
+        <stream_name>semestre</stream_name>
+      </field>
+      <field>
+        <column_name>dia</column_name>
+        <stream_name>dia</stream_name>
+      </field>
+      <field>
+        <column_name>data</column_name>
+        <stream_name>data</stream_name>
+      </field>
     </fields>
-    <custom>
-      <header_font_name>arial</header_font_name>
-      <header_font_size>10</header_font_size>
-      <header_font_bold>N</header_font_bold>
-      <header_font_italic>N</header_font_italic>
-      <header_font_underline>no</header_font_underline>
-      <header_font_orientation>horizontal</header_font_orientation>
-      <header_font_color>black</header_font_color>
-      <header_background_color>none</header_background_color>
-      <header_row_height>255</header_row_height>
-      <header_alignment>left</header_alignment>
-      <header_image />
-      <row_font_name>arial</row_font_name>
-      <row_font_size>10</row_font_size>
-      <row_font_color>black</row_font_color>
-      <row_background_color>none</row_background_color>
-    </custom>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -770,7 +781,7 @@
     </remotesteps>
     <GUI>
       <xloc>736</xloc>
-      <yloc>112</yloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

@@ -431,7 +431,7 @@
     <created_date>2018/12/22 14:34:27.250</created_date>
     <modified_user>-</modified_user>
     <modified_date>2018/12/22 14:34:27.250</modified_date>
-    <key_for_session_key />
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
@@ -610,6 +610,100 @@
     </GUI>
   </step>
   <step>
+    <name>MySQL Input Employees</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>northwindCon</connection>
+    <sql>SELECT id, CONCAT(first_name," ",last_name), job_title, city FROM northwind.employees;</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>208</xloc>
+      <yloc>288</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>MySQL Input Orders</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>northwindCon</connection>
+    <sql>SELECT quantity, (unit_price*quantity)-(unit_price*quantity*discount), unit_price, shipping_fee, discount FROM northwind.orders, northwind.order_details
+	WHERE northwind.order_details.order_id=northwind.orders.id;</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>208</xloc>
+      <yloc>528</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>MySQL Input Products</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>northwindCon</connection>
+    <sql>SELECT id, product_name, quantity_per_unit, category FROM northwind.products;</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>208</xloc>
+      <yloc>448</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>MySQL Input Shippers</name>
     <type>TableInput</type>
     <description />
@@ -641,7 +735,7 @@
     </GUI>
   </step>
   <step>
-    <name>MySQL Input Employees</name>
+    <name>MySQL Input Suppliers</name>
     <type>TableInput</type>
     <description />
     <distribute>Y</distribute>
@@ -652,7 +746,7 @@
       <schema_name />
     </partitioning>
     <connection>northwindCon</connection>
-    <sql>SELECT id, CONCAT(first_name," ",last_name), job_title, city FROM northwind.employees;</sql>
+    <sql>SELECT id, company FROM northwind.suppliers;</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -667,7 +761,7 @@
     </remotesteps>
     <GUI>
       <xloc>208</xloc>
-      <yloc>288</yloc>
+      <yloc>368</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -786,6 +880,57 @@
     </GUI>
   </step>
   <step>
+    <name>MySQL Output Fornecedores ARet</name>
+    <type>TableOutput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>northwindConARET</connection>
+    <schema>arearet</schema>
+    <table>AR_Cleanup_Fornecedor</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field />
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field />
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field />
+    <fields>
+      <field>
+        <column_name>idFornecedor</column_name>
+        <stream_name>id</stream_name>
+      </field>
+      <field>
+        <column_name>empresa</column_name>
+        <stream_name>company</stream_name>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>448</xloc>
+      <yloc>368</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>MySQL Output Funcionarios ARet</name>
     <type>TableOutput</type>
     <description />
@@ -845,57 +990,6 @@
     </GUI>
   </step>
   <step>
-    <name>MySQL Output Fornecedores ARet</name>
-    <type>TableOutput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>northwindConARET</connection>
-    <schema>arearet</schema>
-    <table>AR_Cleanup_Fornecedor</table>
-    <commit>1000</commit>
-    <truncate>N</truncate>
-    <ignore_errors>N</ignore_errors>
-    <use_batch>Y</use_batch>
-    <specify_fields>Y</specify_fields>
-    <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field />
-    <partitioning_daily>N</partitioning_daily>
-    <partitioning_monthly>Y</partitioning_monthly>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field />
-    <tablename_in_table>Y</tablename_in_table>
-    <return_keys>N</return_keys>
-    <return_field />
-    <fields>
-      <field>
-        <column_name>idFornecedor</column_name>
-        <stream_name>id</stream_name>
-      </field>
-      <field>
-        <column_name>empresa</column_name>
-        <stream_name>company</stream_name>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>448</xloc>
-      <yloc>368</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>MySQL Output Produtos ARet</name>
     <type>TableOutput</type>
     <description />
@@ -951,100 +1045,6 @@
     <GUI>
       <xloc>448</xloc>
       <yloc>448</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>MySQL Input Suppliers</name>
-    <type>TableInput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>northwindCon</connection>
-    <sql>SELECT id, company FROM northwind.suppliers;</sql>
-    <limit>0</limit>
-    <lookup />
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>208</xloc>
-      <yloc>368</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>MySQL Input Products</name>
-    <type>TableInput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>northwindCon</connection>
-    <sql>SELECT id, product_name, quantity_per_unit, category FROM northwind.products;</sql>
-    <limit>0</limit>
-    <lookup />
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>208</xloc>
-      <yloc>448</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>MySQL Input Orders</name>
-    <type>TableInput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>northwindCon</connection>
-    <sql>SELECT quantity, (unit_price*quantity)-(unit_price*quantity*discount), unit_price, shipping_fee, discount FROM northwind.orders, northwind.order_details
-	WHERE northwind.order_details.order_id=northwind.orders.id;</sql>
-    <limit>0</limit>
-    <lookup />
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>208</xloc>
-      <yloc>528</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
