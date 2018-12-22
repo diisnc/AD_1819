@@ -2,7 +2,7 @@
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
 -- Schema areaRet
@@ -27,10 +27,10 @@ CREATE TABLE IF NOT EXISTS `areaRet`.`AR_Cleanup_Encomendas` (
   `dataPedido` INT NULL,
   `dataPagamento` INT NULL,
   `dataEnvio` INT NULL,
-  `quantidade` DECIMAL NULL,
-  `precoTotal` DECIMAL NULL,
-  `precoUnidade` DECIMAL NULL,
-  `precoEnvio` DECIMAL NULL,
+  `quantidade` DECIMAL(18,4) NULL,
+  `precoTotal` DECIMAL(19,4) NULL,
+  `precoUnidade` DECIMAL(19,4) NULL,
+  `precoEnvio` DECIMAL(19,4) NULL,
   `desconto` DOUBLE NULL)
 ENGINE = InnoDB;
 
