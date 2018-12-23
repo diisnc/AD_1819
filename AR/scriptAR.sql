@@ -18,6 +18,7 @@ USE `areaRet` ;
 -- Table `areaRet`.`AR_Cleanup_Encomendas`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `areaRet`.`AR_Cleanup_Encomendas` (
+  `idOrderSK` INT NULL AUTO_INCREMENT,
   `idOrder` INT NULL,
   `produto` INT NULL,
   `fornecedor` INT NULL,
