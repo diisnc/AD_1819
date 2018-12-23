@@ -27,18 +27,18 @@ INSERT INTO northwind_dw.dim_data
     FROM northwind.orders WHERE paid_date IS NOT NULL;
 
 INSERT INTO northwind_dw.tf_encomendas (produto,fornecedor,expedidor,funcionario,cliente,dataPedido,dataPagamento,dataEnvio,quantidade,precoTotal,precoUnidade,precoEnvio,desconto)
-	SELECT od.product_id, CAST(SUBSTRING_INDEX(p.supplier_ids,';',1) AS UNSIGNED),o.shipper_id, o.employee_id, o.customer_id, 
-	CAST(CONCAT(YEAR(o.order_date),MONTH(o.order_date),DAY(o.order_date),HOUR(o.order_date),MINUTE(o.order_date),SECOND(o.order_date)) AS UNSIGNED),
-	CAST(CONCAT(YEAR(o.paid_date),MONTH(o.paid_date),DAY(o.paid_date),HOUR(o.paid_date),MINUTE(o.paid_date),SECOND(o.paid_date)) AS UNSIGNED),
-	CAST(CONCAT(YEAR(o.shipped_date),MONTH(o.shipped_date),DAY(o.shipped_date),HOUR(o.shipped_date),MINUTE(o.shipped_date),SECOND(o.shipped_date)) AS UNSIGNED),
+	SELECT o.id, od.product_id, CAST(SUBSTRING_INDEX(p.supplier_ids,';',1) AS UNSIGNED),o.shipper_id, o.employee_id, o.customer_id, 
+	CAST(CONCAT(YEAR(o.order_date),MONTH(o.order_date),DAY(o.order_date)) AS UNSIGNED),
+	CAST(CONCAT(YEAR(o.paid_date),MONTH(o.paid_date),DAY(o.paid_date)) AS UNSIGNED),
+	CAST(CONCAT(YEAR(o.shipped_date),MONTH(o.shipped_date),DAY(o.shipped_date)) AS UNSIGNED),
 	od.quantity, (od.unit_price*od.quantity)-(od.unit_price*od.quantity*od.discount), od.unit_price, o.shipping_fee, od.discount 
 	FROM northwind.orders AS o, northwind.order_details AS od, northwind.products AS p
 		WHERE od.order_id=o.id AND od.product_id=p.id
 	UNION
-	SELECT od.product_id, CAST(SUBSTRING_INDEX(p.supplier_ids,';',-1) AS UNSIGNED),o.shipper_id, o.employee_id, o.customer_id, 
-	CAST(CONCAT(YEAR(o.order_date),MONTH(o.order_date),DAY(o.order_date),HOUR(o.order_date),MINUTE(o.order_date),SECOND(o.order_date)) AS UNSIGNED),
-	CAST(CONCAT(YEAR(o.paid_date),MONTH(o.paid_date),DAY(o.paid_date),HOUR(o.paid_date),MINUTE(o.paid_date),SECOND(o.paid_date)) AS UNSIGNED),
-	CAST(CONCAT(YEAR(o.shipped_date),MONTH(o.shipped_date),DAY(o.shipped_date),HOUR(o.shipped_date),MINUTE(o.shipped_date),SECOND(o.shipped_date)) AS UNSIGNED),
+	SELECT o.id, od.product_id, CAST(SUBSTRING_INDEX(p.supplier_ids,';',-1) AS UNSIGNED),o.shipper_id, o.employee_id, o.customer_id, 
+	CAST(CONCAT(YEAR(o.order_date),MONTH(o.order_date),DAY(o.order_date)) AS UNSIGNED),
+	CAST(CONCAT(YEAR(o.paid_date),MONTH(o.paid_date),DAY(o.paid_date)) AS UNSIGNED),
+	CAST(CONCAT(YEAR(o.shipped_date),MONTH(o.shipped_date),DAY(o.shipped_date)) AS UNSIGNED),
 	od.quantity, (od.unit_price*od.quantity)-(od.unit_price*od.quantity*od.discount), od.unit_price, o.shipping_fee, od.discount 
 	FROM northwind.orders AS o, northwind.order_details AS od, northwind.products AS p
 		WHERE od.order_id=o.id AND od.product_id=p.id;

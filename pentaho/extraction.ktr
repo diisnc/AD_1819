@@ -574,8 +574,8 @@
     </hop>
     <hop>
       <from>MySQL Input Orders</from>
-      <to>Table output</to>
-      <enabled>N</enabled>
+      <to>MySQL Output Encomendas ARet</to>
+      <enabled>Y</enabled>
     </hop>
   </order>
   <step>
@@ -652,8 +652,21 @@
       <schema_name />
     </partitioning>
     <connection>northwindCon</connection>
-    <sql>SELECT quantity, (unit_price*quantity)-(unit_price*quantity*discount), unit_price, shipping_fee, discount FROM northwind.orders, northwind.order_details
-	WHERE northwind.order_details.order_id=northwind.orders.id;</sql>
+    <sql>	SELECT o.id, od.product_id, CAST(SUBSTRING_INDEX(p.supplier_ids,';',1) AS UNSIGNED),o.shipper_id, o.employee_id, o.customer_id, 
+	CAST(CONCAT(YEAR(o.order_date),MONTH(o.order_date),DAY(o.order_date)) AS UNSIGNED),
+	CAST(CONCAT(YEAR(o.paid_date),MONTH(o.paid_date),DAY(o.paid_date)) AS UNSIGNED),
+	CAST(CONCAT(YEAR(o.shipped_date),MONTH(o.shipped_date),DAY(o.shipped_date)) AS UNSIGNED),
+	od.quantity, (od.unit_price*od.quantity)-(od.unit_price*od.quantity*od.discount), od.unit_price, o.shipping_fee, od.discount 
+	FROM northwind.orders AS o, northwind.order_details AS od, northwind.products AS p
+		WHERE od.order_id=o.id AND od.product_id=p.id
+	UNION
+	SELECT o.id, od.product_id, CAST(SUBSTRING_INDEX(p.supplier_ids,';',-1) AS UNSIGNED),o.shipper_id, o.employee_id, o.customer_id, 
+	CAST(CONCAT(YEAR(o.order_date),MONTH(o.order_date),DAY(o.order_date)) AS UNSIGNED),
+	CAST(CONCAT(YEAR(o.paid_date),MONTH(o.paid_date),DAY(o.paid_date)) AS UNSIGNED),
+	CAST(CONCAT(YEAR(o.shipped_date),MONTH(o.shipped_date),DAY(o.shipped_date)) AS UNSIGNED),
+	od.quantity, (od.unit_price*od.quantity)-(od.unit_price*od.quantity*od.discount), od.unit_price, o.shipping_fee, od.discount 
+	FROM northwind.orders AS o, northwind.order_details AS od, northwind.products AS p
+		WHERE od.order_id=o.id AND od.product_id=p.id;</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -825,6 +838,105 @@
     <GUI>
       <xloc>448</xloc>
       <yloc>128</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>MySQL Output Encomendas ARet</name>
+    <type>TableOutput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>northwindConARET</connection>
+    <schema>arearet</schema>
+    <table>AR_Cleanup_Encomendas</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field />
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field />
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field />
+    <fields>
+      <field>
+        <column_name>idOrder</column_name>
+        <stream_name>id</stream_name>
+      </field>
+      <field>
+        <column_name>desconto</column_name>
+        <stream_name>discount</stream_name>
+      </field>
+      <field>
+        <column_name>precoEnvio</column_name>
+        <stream_name>shipping_fee</stream_name>
+      </field>
+      <field>
+        <column_name>precoUnidade</column_name>
+        <stream_name>unit_price</stream_name>
+      </field>
+      <field>
+        <column_name>precoTotal</column_name>
+        <stream_name>(od.unit_price*od.quantity)-(od.unit_price*od.quantity*od.discount)</stream_name>
+      </field>
+      <field>
+        <column_name>quantidade</column_name>
+        <stream_name>quantity</stream_name>
+      </field>
+      <field>
+        <column_name>produto</column_name>
+        <stream_name>product_id</stream_name>
+      </field>
+      <field>
+        <column_name>fornecedor</column_name>
+        <stream_name>CAST(SUBSTRING_INDEX(p.supplier_ids,';',1) AS UNSIGNED)</stream_name>
+      </field>
+      <field>
+        <column_name>expedidor</column_name>
+        <stream_name>shipper_id</stream_name>
+      </field>
+      <field>
+        <column_name>funcionario</column_name>
+        <stream_name>employee_id</stream_name>
+      </field>
+      <field>
+        <column_name>cliente</column_name>
+        <stream_name>customer_id</stream_name>
+      </field>
+      <field>
+        <column_name>dataPedido</column_name>
+        <stream_name>CAST(CONCAT(YEAR(o.order_date),MONTH(o.order_date),DAY(o.order_date)) AS UNSIGNED)</stream_name>
+      </field>
+      <field>
+        <column_name>dataPagamento</column_name>
+        <stream_name>CAST(CONCAT(YEAR(o.paid_date),MONTH(o.paid_date),DAY(o.paid_date)) AS UNSIGNED)</stream_name>
+      </field>
+      <field>
+        <column_name>dataEnvio</column_name>
+        <stream_name>CAST(CONCAT(YEAR(o.shipped_date),MONTH(o.shipped_date),DAY(o.shipped_date)) AS UNSIGNED)</stream_name>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>448</xloc>
+      <yloc>528</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1045,49 +1157,6 @@
     <GUI>
       <xloc>448</xloc>
       <yloc>448</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Table output</name>
-    <type>TableOutput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>northwindConARET</connection>
-    <schema />
-    <table>AR_Cleanup_Encomendas</table>
-    <commit>1000</commit>
-    <truncate>N</truncate>
-    <ignore_errors>N</ignore_errors>
-    <use_batch>Y</use_batch>
-    <specify_fields>N</specify_fields>
-    <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field />
-    <partitioning_daily>N</partitioning_daily>
-    <partitioning_monthly>Y</partitioning_monthly>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field />
-    <tablename_in_table>Y</tablename_in_table>
-    <return_keys>N</return_keys>
-    <return_field />
-    <fields>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>448</xloc>
-      <yloc>528</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
