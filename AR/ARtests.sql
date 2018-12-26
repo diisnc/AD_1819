@@ -9,9 +9,9 @@ delete from ar_cleanup_produto;
 
 
 select * from ar_cleanup_data;
-select * from ar_cleanup_cliente;
-select * from ar_cleanup_expedidor;
-select * from ar_cleanup_produto;
-select * from ar_cleanup_funcionario;
-select * from ar_cleanup_fornecedor;
-select * from ar_cleanup_encomendas;
+select * from ar_cleanup_cliente; -- sem nulos
+select * from ar_cleanup_expedidor; -- sem nulos
+select * from ar_cleanup_produto; -- com atributos nulos (quantidadeUnidade)
+select * from ar_cleanup_funcionario; -- sem nulos
+select * from ar_cleanup_fornecedor; -- sem nulos
+select * from ar_cleanup_encomendas; -- com atributos nulos (expedidor, dataPagamento, dataEnvio)
