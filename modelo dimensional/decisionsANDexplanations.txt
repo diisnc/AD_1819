@@ -38,3 +38,10 @@ Due to limited requirement, the business driver that will be analyzed is (...) E
 - número de encomendas por fornecedor
 - número de vendas de um funcionário por região?
 [EM CONSTRUÇÃO]
+
+
+---------------------------------------------------------------------
+EXPLICAÇÃO (ver com eles)
+
+1. If the table to insert into is empty (basically, the first insert ever), the first row always seem to be a row with null values. I've checked few Dimension tables, and they all seem to have a row with null values.
+#1 surely is. You need to read your Kimball better. That line is for the null matches. Fact tables, by definition, can't have null values on the dimension fields, so on those cases you point to a line with nulls, usually id 1

@@ -53,3 +53,9 @@ BEGIN
 */
 END;
 //
+
+-- ------------------------------------------------------------
+-- INSERT INTO ar_cleanup_data VALUES (0, 'desconhecido', 'desconhecido', 'desconhecido', 'desconhecido', 'desconhecido', 'desconhecido', 'desconhecido');
+
+-- INSERT INTO ar_cleanup_expedidor VALUES (0,'desconhecido'); 
+

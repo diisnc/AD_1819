@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>&lt;?xml version="1.0" encoding="UTF-8"?></name>
+    <name>loadDW</name>
     <description />
     <extended_description />
     <trans_version />
     <trans_type>Normal</trans_type>
-    <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
     </parameters>
@@ -428,71 +427,16 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2018/12/22 14:34:27.250</created_date>
+    <created_date>2018/12/26 16:22:46.079</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2018/12/22 14:34:27.250</modified_date>
+    <modified_date>2018/12/26 16:22:46.079</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
   </notepads>
   <connection>
-    <name>northwindCon</name>
-    <server>localhost</server>
-    <type>MYSQL</type>
-    <access>Native</access>
-    <database>northwind</database>
-    <port>3306</port>
-    <username>root</username>
-    <password>Encrypted 2be98afc86aa7f2e4bb18bd63c99dbdde</password>
-    <servername />
-    <data_tablespace />
-    <index_tablespace />
-    <attributes>
-      <attribute>
-        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>IS_CLUSTERED</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>PORT_NUMBER</code>
-        <attribute>3306</attribute>
-      </attribute>
-      <attribute>
-        <code>PRESERVE_RESERVED_WORD_CASE</code>
-        <attribute>Y</attribute>
-      </attribute>
-      <attribute>
-        <code>QUOTE_ALL_FIELDS</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>STREAM_RESULTS</code>
-        <attribute>Y</attribute>
-      </attribute>
-      <attribute>
-        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
-        <attribute>Y</attribute>
-      </attribute>
-      <attribute>
-        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
-        <attribute>Y</attribute>
-      </attribute>
-      <attribute>
-        <code>USE_POOLING</code>
-        <attribute>N</attribute>
-      </attribute>
-    </attributes>
-  </connection>
-  <connection>
-    <name>northwindConARET</name>
+    <name>areaRetCon</name>
     <server>localhost</server>
     <type>MYSQL</type>
     <access>Native</access>
@@ -546,45 +490,100 @@
       </attribute>
     </attributes>
   </connection>
+  <connection>
+    <name>dwCon</name>
+    <server>localhost</server>
+    <type>MYSQL</type>
+    <access>Native</access>
+    <database>northwind_dw</database>
+    <port>3306</port>
+    <username>root</username>
+    <password>Encrypted 2be98afc86aa7f2e4bb18bd63c99dbdde</password>
+    <servername />
+    <data_tablespace />
+    <index_tablespace />
+    <attributes>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>IS_CLUSTERED</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>PORT_NUMBER</code>
+        <attribute>3306</attribute>
+      </attribute>
+      <attribute>
+        <code>PRESERVE_RESERVED_WORD_CASE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>QUOTE_ALL_FIELDS</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>STREAM_RESULTS</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>USE_POOLING</code>
+        <attribute>N</attribute>
+      </attribute>
+    </attributes>
+  </connection>
   <order>
     <hop>
-      <from>MySQL Input Costumers</from>
-      <to>MySQL Output Clientes ARet</to>
-      <enabled>Y</enabled>
+      <from>MySQL Input Clientes ARet</from>
+      <to>MySQL Output DIM_Cliente</to>
+      <enabled>N</enabled>
     </hop>
     <hop>
-      <from>MySQL Input Shippers</from>
-      <to>MySQL Output Expedidores ARet</to>
-      <enabled>Y</enabled>
+      <from>MySQL Input Expedidores ARet</from>
+      <to>MySQL Output DIM_Expedidor</to>
+      <enabled>N</enabled>
     </hop>
     <hop>
-      <from>MySQL Input Employees</from>
-      <to>MySQL Output Funcionarios ARet</to>
-      <enabled>Y</enabled>
+      <from>MySQL Input Funcionarios ARet</from>
+      <to>MySQL Output DIM_Funcionario</to>
+      <enabled>N</enabled>
     </hop>
     <hop>
-      <from>MySQL Input Suppliers</from>
-      <to>MySQL Output Fornecedores ARet</to>
-      <enabled>Y</enabled>
+      <from>MySQL Input Fornecedores ARet</from>
+      <to>MySQL Output DIM_Fornecedor</to>
+      <enabled>N</enabled>
     </hop>
     <hop>
-      <from>MySQL Input Products</from>
-      <to>MySQL Output Produtos ARet</to>
-      <enabled>Y</enabled>
+      <from>MySQL Input Produtos ARet</from>
+      <to>MySQL Output DIM_Produto</to>
+      <enabled>N</enabled>
     </hop>
     <hop>
-      <from>MySQL Input Orders</from>
-      <to>MySQL Output Encomendas ARet</to>
-      <enabled>Y</enabled>
+      <from>MySQL Input Datas ARet</from>
+      <to>MySQL Output DIM_Data</to>
+      <enabled>N</enabled>
     </hop>
     <hop>
-      <from>MySQL Input Dates</from>
-      <to>MySQL Output Datas ARet</to>
+      <from>MySQL Input Encomendas ARet</from>
+      <to>MySQL Output TF_Encomendas</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>MySQL Input Costumers</name>
+    <name>MySQL Input Clientes ARet</name>
     <type>TableInput</type>
     <description />
     <distribute>Y</distribute>
@@ -594,8 +593,8 @@
       <method>none</method>
       <schema_name />
     </partitioning>
-    <connection>northwindCon</connection>
-    <sql>SELECT id, CONCAT(first_name," ",last_name), company, city, state_province FROM northwind.customers;</sql>
+    <connection>areaRetCon</connection>
+    <sql>SELECT * FROM AR_Cleanup_Cliente</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -610,12 +609,12 @@
     </remotesteps>
     <GUI>
       <xloc>208</xloc>
-      <yloc>128</yloc>
+      <yloc>32</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>MySQL Input Dates</name>
+    <name>MySQL Input Datas ARet</name>
     <type>TableInput</type>
     <description />
     <distribute>Y</distribute>
@@ -625,25 +624,8 @@
       <method>none</method>
       <schema_name />
     </partitioning>
-    <connection>northwindCon</connection>
-    <sql>SELECT CAST(CONCAT(YEAR(order_date),MONTH(order_date),DAY(order_date)) AS UNSIGNED),
-CONCAT(YEAR(order_date), "-", MONTH(order_date), "-", DAY(order_Date)), 
-WEEKDAY(order_date), DAY(order_date), MONTH(order_date), YEAR(order_date), QUARTER(order_date), FLOOR((QUARTER(order_date)/3)+1)
-FROM northwind.orders WHERE order_date IS NOT NULL
-
-UNION 
-
-SELECT CAST(CONCAT(YEAR(shipped_date),MONTH(shipped_date),DAY(shipped_date)) AS UNSIGNED),
-CONCAT(YEAR(shipped_date), "-", MONTH(shipped_date), "-", DAY(shipped_Date)), 
-WEEKDAY(shipped_date), DAY(shipped_date), MONTH(shipped_date), YEAR(shipped_date), QUARTER(shipped_date), FLOOR((QUARTER(shipped_date)/3)+1)
-FROM northwind.orders WHERE shipped_date IS NOT NULL
-
-UNION 
-
-SELECT CAST(CONCAT(YEAR(paid_date),MONTH(paid_date),DAY(paid_date)) AS UNSIGNED),
-CONCAT(YEAR(paid_date), "-", MONTH(paid_date), "-", DAY(paid_Date)), 
-WEEKDAY(paid_date), DAY(paid_date), MONTH(paid_date), YEAR(paid_date), QUARTER(paid_date), FLOOR((QUARTER(paid_date)/3)+1)
-FROM northwind.orders WHERE paid_date IS NOT NULL;</sql>
+    <connection>areaRetCon</connection>
+    <sql>SELECT * FROM AR_Cleanup_Data</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -658,12 +640,12 @@ FROM northwind.orders WHERE paid_date IS NOT NULL;</sql>
     </remotesteps>
     <GUI>
       <xloc>208</xloc>
-      <yloc>608</yloc>
+      <yloc>432</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>MySQL Input Employees</name>
+    <name>MySQL Input Encomendas ARet</name>
     <type>TableInput</type>
     <description />
     <distribute>Y</distribute>
@@ -673,8 +655,8 @@ FROM northwind.orders WHERE paid_date IS NOT NULL;</sql>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <connection>northwindCon</connection>
-    <sql>SELECT id, CONCAT(first_name," ",last_name), job_title, city FROM northwind.employees;</sql>
+    <connection>areaRetCon</connection>
+    <sql>SELECT * FROM AR_Cleanup_Encomendas</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -689,12 +671,12 @@ FROM northwind.orders WHERE paid_date IS NOT NULL;</sql>
     </remotesteps>
     <GUI>
       <xloc>208</xloc>
-      <yloc>288</yloc>
+      <yloc>512</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>MySQL Input Orders</name>
+    <name>MySQL Input Expedidores ARet</name>
     <type>TableInput</type>
     <description />
     <distribute>Y</distribute>
@@ -704,22 +686,8 @@ FROM northwind.orders WHERE paid_date IS NOT NULL;</sql>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <connection>northwindCon</connection>
-    <sql>	SELECT o.id, od.product_id, CAST(SUBSTRING_INDEX(p.supplier_ids,';',1) AS UNSIGNED),o.shipper_id, o.employee_id, o.customer_id, 
-	CAST(CONCAT(YEAR(o.order_date),MONTH(o.order_date),DAY(o.order_date)) AS UNSIGNED),
-	CAST(CONCAT(YEAR(o.paid_date),MONTH(o.paid_date),DAY(o.paid_date)) AS UNSIGNED),
-	CAST(CONCAT(YEAR(o.shipped_date),MONTH(o.shipped_date),DAY(o.shipped_date)) AS UNSIGNED),
-	od.quantity, (od.unit_price*od.quantity)-(od.unit_price*od.quantity*od.discount), od.unit_price, o.shipping_fee, od.discount 
-	FROM northwind.orders AS o, northwind.order_details AS od, northwind.products AS p
-		WHERE od.order_id=o.id AND od.product_id=p.id
-	UNION
-	SELECT o.id, od.product_id, CAST(SUBSTRING_INDEX(p.supplier_ids,';',-1) AS UNSIGNED),o.shipper_id, o.employee_id, o.customer_id, 
-	CAST(CONCAT(YEAR(o.order_date),MONTH(o.order_date),DAY(o.order_date)) AS UNSIGNED),
-	CAST(CONCAT(YEAR(o.paid_date),MONTH(o.paid_date),DAY(o.paid_date)) AS UNSIGNED),
-	CAST(CONCAT(YEAR(o.shipped_date),MONTH(o.shipped_date),DAY(o.shipped_date)) AS UNSIGNED),
-	od.quantity, (od.unit_price*od.quantity)-(od.unit_price*od.quantity*od.discount), od.unit_price, o.shipping_fee, od.discount 
-	FROM northwind.orders AS o, northwind.order_details AS od, northwind.products AS p
-		WHERE od.order_id=o.id AND od.product_id=p.id;</sql>
+    <connection>areaRetCon</connection>
+    <sql>SELECT * FROM AR_Cleanup_Expedidor</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -734,12 +702,12 @@ FROM northwind.orders WHERE paid_date IS NOT NULL;</sql>
     </remotesteps>
     <GUI>
       <xloc>208</xloc>
-      <yloc>528</yloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>MySQL Input Products</name>
+    <name>MySQL Input Fornecedores ARet</name>
     <type>TableInput</type>
     <description />
     <distribute>Y</distribute>
@@ -749,8 +717,8 @@ FROM northwind.orders WHERE paid_date IS NOT NULL;</sql>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <connection>northwindCon</connection>
-    <sql>SELECT id, product_name, quantity_per_unit, category FROM northwind.products;</sql>
+    <connection>areaRetCon</connection>
+    <sql>SELECT * FROM AR_Cleanup_Fornecedor</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -765,12 +733,12 @@ FROM northwind.orders WHERE paid_date IS NOT NULL;</sql>
     </remotesteps>
     <GUI>
       <xloc>208</xloc>
-      <yloc>448</yloc>
+      <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>MySQL Input Shippers</name>
+    <name>MySQL Input Funcionarios ARet</name>
     <type>TableInput</type>
     <description />
     <distribute>Y</distribute>
@@ -780,8 +748,8 @@ FROM northwind.orders WHERE paid_date IS NOT NULL;</sql>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <connection>northwindCon</connection>
-    <sql>SELECT id, company FROM northwind.shippers;</sql>
+    <connection>areaRetCon</connection>
+    <sql>SELECT * FROM AR_Cleanup_Funcionario</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -796,12 +764,12 @@ FROM northwind.orders WHERE paid_date IS NOT NULL;</sql>
     </remotesteps>
     <GUI>
       <xloc>208</xloc>
-      <yloc>208</yloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>MySQL Input Suppliers</name>
+    <name>MySQL Input Produtos ARet</name>
     <type>TableInput</type>
     <description />
     <distribute>Y</distribute>
@@ -811,8 +779,8 @@ FROM northwind.orders WHERE paid_date IS NOT NULL;</sql>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <connection>northwindCon</connection>
-    <sql>SELECT id, company FROM northwind.suppliers;</sql>
+    <connection>areaRetCon</connection>
+    <sql>SELECT * FROM AR_Cleanup_Produto</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -827,12 +795,12 @@ FROM northwind.orders WHERE paid_date IS NOT NULL;</sql>
     </remotesteps>
     <GUI>
       <xloc>208</xloc>
-      <yloc>368</yloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>MySQL Output Clientes ARet</name>
+    <name>MySQL Output DIM_Cliente</name>
     <type>TableOutput</type>
     <description />
     <distribute>Y</distribute>
@@ -842,9 +810,9 @@ FROM northwind.orders WHERE paid_date IS NOT NULL;</sql>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <connection>northwindConARET</connection>
-    <schema>arearet</schema>
-    <table>AR_Cleanup_Cliente</table>
+    <connection>dwCon</connection>
+    <schema>northwind_dw</schema>
+    <table>Dim_Cliente</table>
     <commit>1000</commit>
     <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>
@@ -862,23 +830,23 @@ FROM northwind.orders WHERE paid_date IS NOT NULL;</sql>
     <fields>
       <field>
         <column_name>idCliente</column_name>
-        <stream_name>id</stream_name>
+        <stream_name>idCliente</stream_name>
       </field>
       <field>
         <column_name>nome</column_name>
-        <stream_name>CONCAT(first_name," ",last_name)</stream_name>
+        <stream_name>nome</stream_name>
       </field>
       <field>
         <column_name>empresa</column_name>
-        <stream_name>company</stream_name>
+        <stream_name>empresa</stream_name>
       </field>
       <field>
         <column_name>cidade</column_name>
-        <stream_name>city</stream_name>
+        <stream_name>cidade</stream_name>
       </field>
       <field>
         <column_name>estado</column_name>
-        <stream_name>state_province</stream_name>
+        <stream_name>estado</stream_name>
       </field>
     </fields>
     <cluster_schema />
@@ -889,13 +857,13 @@ FROM northwind.orders WHERE paid_date IS NOT NULL;</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>448</xloc>
-      <yloc>128</yloc>
+      <xloc>496</xloc>
+      <yloc>32</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>MySQL Output Datas ARet</name>
+    <name>MySQL Output DIM_Data</name>
     <type>TableOutput</type>
     <description />
     <distribute>Y</distribute>
@@ -905,9 +873,9 @@ FROM northwind.orders WHERE paid_date IS NOT NULL;</sql>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <connection>northwindConARET</connection>
-    <schema>arearet</schema>
-    <table>AR_Cleanup_Data</table>
+    <connection>dwCon</connection>
+    <schema>northwind_dw</schema>
+    <table>DIM_Data</table>
     <commit>1000</commit>
     <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>
@@ -924,36 +892,36 @@ FROM northwind.orders WHERE paid_date IS NOT NULL;</sql>
     <return_field />
     <fields>
       <field>
-        <column_name>semestre</column_name>
-        <stream_name>FLOOR((QUARTER(order_date)/3)+1)</stream_name>
-      </field>
-      <field>
-        <column_name>trimestre</column_name>
-        <stream_name>QUARTER(order_date)</stream_name>
-      </field>
-      <field>
-        <column_name>ano</column_name>
-        <stream_name>YEAR(order_date)</stream_name>
-      </field>
-      <field>
-        <column_name>mes</column_name>
-        <stream_name>MONTH(order_date)</stream_name>
-      </field>
-      <field>
-        <column_name>dia</column_name>
-        <stream_name>DAY(order_date)</stream_name>
-      </field>
-      <field>
-        <column_name>diaSemana</column_name>
-        <stream_name>WEEKDAY(order_date)</stream_name>
-      </field>
-      <field>
         <column_name>idData</column_name>
-        <stream_name>CAST(CONCAT(YEAR(order_date),MONTH(order_date),DAY(order_date)) AS UNSIGNED)</stream_name>
+        <stream_name>idData</stream_name>
       </field>
       <field>
         <column_name>data</column_name>
-        <stream_name>CONCAT(YEAR(order_date), "-", MONTH(order_date), "-", DAY(order_Date))</stream_name>
+        <stream_name>data</stream_name>
+      </field>
+      <field>
+        <column_name>diaSemana</column_name>
+        <stream_name>diaSemana</stream_name>
+      </field>
+      <field>
+        <column_name>dia</column_name>
+        <stream_name>dia</stream_name>
+      </field>
+      <field>
+        <column_name>mes</column_name>
+        <stream_name>mes</stream_name>
+      </field>
+      <field>
+        <column_name>ano</column_name>
+        <stream_name>ano</stream_name>
+      </field>
+      <field>
+        <column_name>trimestre</column_name>
+        <stream_name>trimestre</stream_name>
+      </field>
+      <field>
+        <column_name>semestre</column_name>
+        <stream_name>semestre</stream_name>
       </field>
     </fields>
     <cluster_schema />
@@ -964,13 +932,13 @@ FROM northwind.orders WHERE paid_date IS NOT NULL;</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>448</xloc>
-      <yloc>608</yloc>
+      <xloc>496</xloc>
+      <yloc>432</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>MySQL Output Encomendas ARet</name>
+    <name>MySQL Output DIM_Expedidor</name>
     <type>TableOutput</type>
     <description />
     <distribute>Y</distribute>
@@ -980,108 +948,9 @@ FROM northwind.orders WHERE paid_date IS NOT NULL;</sql>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <connection>northwindConARET</connection>
-    <schema>arearet</schema>
-    <table>AR_Cleanup_Encomendas</table>
-    <commit>1000</commit>
-    <truncate>N</truncate>
-    <ignore_errors>N</ignore_errors>
-    <use_batch>N</use_batch>
-    <specify_fields>Y</specify_fields>
-    <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field />
-    <partitioning_daily>N</partitioning_daily>
-    <partitioning_monthly>Y</partitioning_monthly>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field />
-    <tablename_in_table>Y</tablename_in_table>
-    <return_keys>N</return_keys>
-    <return_field />
-    <fields>
-      <field>
-        <column_name>idOrder</column_name>
-        <stream_name>id</stream_name>
-      </field>
-      <field>
-        <column_name>desconto</column_name>
-        <stream_name>discount</stream_name>
-      </field>
-      <field>
-        <column_name>precoEnvio</column_name>
-        <stream_name>shipping_fee</stream_name>
-      </field>
-      <field>
-        <column_name>precoUnidade</column_name>
-        <stream_name>unit_price</stream_name>
-      </field>
-      <field>
-        <column_name>precoTotal</column_name>
-        <stream_name>(od.unit_price*od.quantity)-(od.unit_price*od.quantity*od.discount)</stream_name>
-      </field>
-      <field>
-        <column_name>quantidade</column_name>
-        <stream_name>quantity</stream_name>
-      </field>
-      <field>
-        <column_name>produto</column_name>
-        <stream_name>product_id</stream_name>
-      </field>
-      <field>
-        <column_name>fornecedor</column_name>
-        <stream_name>CAST(SUBSTRING_INDEX(p.supplier_ids,';',1) AS UNSIGNED)</stream_name>
-      </field>
-      <field>
-        <column_name>expedidor</column_name>
-        <stream_name>shipper_id</stream_name>
-      </field>
-      <field>
-        <column_name>funcionario</column_name>
-        <stream_name>employee_id</stream_name>
-      </field>
-      <field>
-        <column_name>cliente</column_name>
-        <stream_name>customer_id</stream_name>
-      </field>
-      <field>
-        <column_name>dataPedido</column_name>
-        <stream_name>CAST(CONCAT(YEAR(o.order_date),MONTH(o.order_date),DAY(o.order_date)) AS UNSIGNED)</stream_name>
-      </field>
-      <field>
-        <column_name>dataPagamento</column_name>
-        <stream_name>CAST(CONCAT(YEAR(o.paid_date),MONTH(o.paid_date),DAY(o.paid_date)) AS UNSIGNED)</stream_name>
-      </field>
-      <field>
-        <column_name>dataEnvio</column_name>
-        <stream_name>CAST(CONCAT(YEAR(o.shipped_date),MONTH(o.shipped_date),DAY(o.shipped_date)) AS UNSIGNED)</stream_name>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>448</xloc>
-      <yloc>528</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>MySQL Output Expedidores ARet</name>
-    <type>TableOutput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>northwindConARET</connection>
-    <schema>arearet</schema>
-    <table>AR_Cleanup_Expedidor</table>
+    <connection>dwCon</connection>
+    <schema>northwind_dw</schema>
+    <table>DIM_Expedidor</table>
     <commit>1000</commit>
     <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>
@@ -1099,11 +968,11 @@ FROM northwind.orders WHERE paid_date IS NOT NULL;</sql>
     <fields>
       <field>
         <column_name>idExpedidor</column_name>
-        <stream_name>id</stream_name>
+        <stream_name>idExpedidor</stream_name>
       </field>
       <field>
         <column_name>empresa</column_name>
-        <stream_name>company</stream_name>
+        <stream_name>empresa</stream_name>
       </field>
     </fields>
     <cluster_schema />
@@ -1114,13 +983,13 @@ FROM northwind.orders WHERE paid_date IS NOT NULL;</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>448</xloc>
-      <yloc>208</yloc>
+      <xloc>496</xloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>MySQL Output Fornecedores ARet</name>
+    <name>MySQL Output DIM_Fornecedor</name>
     <type>TableOutput</type>
     <description />
     <distribute>Y</distribute>
@@ -1130,9 +999,9 @@ FROM northwind.orders WHERE paid_date IS NOT NULL;</sql>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <connection>northwindConARET</connection>
-    <schema>arearet</schema>
-    <table>AR_Cleanup_Fornecedor</table>
+    <connection>dwCon</connection>
+    <schema>northwind_dw</schema>
+    <table>DIM_Fornecedor</table>
     <commit>1000</commit>
     <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>
@@ -1150,11 +1019,11 @@ FROM northwind.orders WHERE paid_date IS NOT NULL;</sql>
     <fields>
       <field>
         <column_name>idFornecedor</column_name>
-        <stream_name>id</stream_name>
+        <stream_name>idFornecedor</stream_name>
       </field>
       <field>
         <column_name>empresa</column_name>
-        <stream_name>company</stream_name>
+        <stream_name>empresa</stream_name>
       </field>
     </fields>
     <cluster_schema />
@@ -1165,13 +1034,13 @@ FROM northwind.orders WHERE paid_date IS NOT NULL;</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>448</xloc>
-      <yloc>368</yloc>
+      <xloc>496</xloc>
+      <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>MySQL Output Funcionarios ARet</name>
+    <name>MySQL Output DIM_Funcionario</name>
     <type>TableOutput</type>
     <description />
     <distribute>Y</distribute>
@@ -1181,9 +1050,9 @@ FROM northwind.orders WHERE paid_date IS NOT NULL;</sql>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <connection>northwindConARET</connection>
-    <schema>arearet</schema>
-    <table>AR_Cleanup_Funcionario</table>
+    <connection>dwCon</connection>
+    <schema>northwind_dw</schema>
+    <table>DIM_Funcionario</table>
     <commit>1000</commit>
     <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>
@@ -1201,19 +1070,19 @@ FROM northwind.orders WHERE paid_date IS NOT NULL;</sql>
     <fields>
       <field>
         <column_name>idFuncionario</column_name>
-        <stream_name>id</stream_name>
+        <stream_name>idFuncionario</stream_name>
       </field>
       <field>
         <column_name>nome</column_name>
-        <stream_name>CONCAT(first_name," ",last_name)</stream_name>
-      </field>
-      <field>
-        <column_name>cidade</column_name>
-        <stream_name>city</stream_name>
+        <stream_name>nome</stream_name>
       </field>
       <field>
         <column_name>cargo</column_name>
-        <stream_name>job_title</stream_name>
+        <stream_name>cargo</stream_name>
+      </field>
+      <field>
+        <column_name>cidade</column_name>
+        <stream_name>cidade</stream_name>
       </field>
     </fields>
     <cluster_schema />
@@ -1224,13 +1093,13 @@ FROM northwind.orders WHERE paid_date IS NOT NULL;</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>448</xloc>
-      <yloc>288</yloc>
+      <xloc>496</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>MySQL Output Produtos ARet</name>
+    <name>MySQL Output TF_Encomendas</name>
     <type>TableOutput</type>
     <description />
     <distribute>Y</distribute>
@@ -1240,9 +1109,108 @@ FROM northwind.orders WHERE paid_date IS NOT NULL;</sql>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <connection>northwindConARET</connection>
-    <schema>arearet</schema>
-    <table>AR_Cleanup_Produto</table>
+    <connection>dwCon</connection>
+    <schema>northwind_dw</schema>
+    <table>TF_Encomendas</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>N</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field />
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field />
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field />
+    <fields>
+      <field>
+        <column_name>idOrder</column_name>
+        <stream_name>idOrder</stream_name>
+      </field>
+      <field>
+        <column_name>produto</column_name>
+        <stream_name>produto</stream_name>
+      </field>
+      <field>
+        <column_name>fornecedor</column_name>
+        <stream_name>fornecedor</stream_name>
+      </field>
+      <field>
+        <column_name>expedidor</column_name>
+        <stream_name>expedidor</stream_name>
+      </field>
+      <field>
+        <column_name>funcionario</column_name>
+        <stream_name>funcionario</stream_name>
+      </field>
+      <field>
+        <column_name>cliente</column_name>
+        <stream_name>cliente</stream_name>
+      </field>
+      <field>
+        <column_name>dataPedido</column_name>
+        <stream_name>dataPedido</stream_name>
+      </field>
+      <field>
+        <column_name>dataPagamento</column_name>
+        <stream_name>dataPagamento</stream_name>
+      </field>
+      <field>
+        <column_name>dataEnvio</column_name>
+        <stream_name>dataEnvio</stream_name>
+      </field>
+      <field>
+        <column_name>quantidade</column_name>
+        <stream_name>quantidade</stream_name>
+      </field>
+      <field>
+        <column_name>precoTotal</column_name>
+        <stream_name>precoTotal</stream_name>
+      </field>
+      <field>
+        <column_name>precoUnidade</column_name>
+        <stream_name>precoUnidade</stream_name>
+      </field>
+      <field>
+        <column_name>precoEnvio</column_name>
+        <stream_name>precoEnvio</stream_name>
+      </field>
+      <field>
+        <column_name>desconto</column_name>
+        <stream_name>desconto</stream_name>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>496</xloc>
+      <yloc>512</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>MySQL Output DIM_Produto</name>
+    <type>TableOutput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>dwCon</connection>
+    <schema>northwind_dw</schema>
+    <table>DIM_Produto</table>
     <commit>1000</commit>
     <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>
@@ -1260,19 +1228,19 @@ FROM northwind.orders WHERE paid_date IS NOT NULL;</sql>
     <fields>
       <field>
         <column_name>idProduto</column_name>
-        <stream_name>id</stream_name>
-      </field>
-      <field>
-        <column_name>categoria</column_name>
-        <stream_name>category</stream_name>
+        <stream_name>idProduto</stream_name>
       </field>
       <field>
         <column_name>nome</column_name>
-        <stream_name>product_name</stream_name>
+        <stream_name>nome</stream_name>
       </field>
       <field>
         <column_name>quantidadeUnidade</column_name>
-        <stream_name>quantity_per_unit</stream_name>
+        <stream_name>quantidadeUnidade</stream_name>
+      </field>
+      <field>
+        <column_name>categoria</column_name>
+        <stream_name>categoria</stream_name>
       </field>
     </fields>
     <cluster_schema />
@@ -1283,8 +1251,8 @@ FROM northwind.orders WHERE paid_date IS NOT NULL;</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>448</xloc>
-      <yloc>448</yloc>
+      <xloc>496</xloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
