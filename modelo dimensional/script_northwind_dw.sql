@@ -65,7 +65,7 @@ ENGINE = InnoDB;
 -- Table `northwind_dw`.`DIM_Data`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `northwind_dw`.`DIM_Data` (
-  `idData` INT NOT NULL AUTO_INCREMENT,
+  `idData` BIGINT NOT NULL,
   `data` VARCHAR(45) NOT NULL,
   `diaSemana` VARCHAR(45) NOT NULL,
   `dia` VARCHAR(45) NOT NULL,
@@ -91,21 +91,22 @@ ENGINE = InnoDB;
 -- Table `northwind_dw`.`TF_Encomendas`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `northwind_dw`.`TF_Encomendas` (
-  `idOrder` INT NOT NULL AUTO_INCREMENT,
+  `idOrderSK` INT NOT NULL AUTO_INCREMENT,
+  `idOrder` INT NOT NULL,
   `produto` INT NOT NULL,
   `fornecedor` INT NOT NULL,
   `expedidor` INT NOT NULL,
   `funcionario` INT NOT NULL,
   `cliente` INT NOT NULL,
-  `dataPedido` INT NOT NULL,
-  `dataPagamento` INT NOT NULL,
-  `dataEnvio` INT NOT NULL,
+  `dataPedido` BIGINT NOT NULL,
+  `dataPagamento` BIGINT NOT NULL,
+  `dataEnvio` BIGINT NOT NULL,
   `quantidade` DECIMAL(18,4) NOT NULL,
   `precoTotal` DECIMAL(19,4) NOT NULL,
   `precoUnidade` DECIMAL(19,4) NOT NULL,
   `precoEnvio` DECIMAL(19,4) NOT NULL,
   `desconto` DOUBLE NOT NULL,
-  PRIMARY KEY (`idOrder`),
+  PRIMARY KEY (`idOrderSK`),
   INDEX `fk_TF-Orders_DIM-Employee1_idx` (`funcionario` ASC),
   INDEX `fk_TF-Orders_DIM-Product1_idx` (`produto` ASC),
   INDEX `fk_TF-Orders_DIM-Customer1_idx` (`cliente` ASC),
@@ -114,46 +115,46 @@ CREATE TABLE IF NOT EXISTS `northwind_dw`.`TF_Encomendas` (
   INDEX `fk_TF-Encomendas_DIM-Data2_idx` (`dataPagamento` ASC),
   INDEX `fk_TF-Encomendas_DIM-Data3_idx` (`dataEnvio` ASC),
   INDEX `fk_TF-Encomendas_DIM-Expedidor1_idx` (`expedidor` ASC),
-  CONSTRAINT `fk_TF-Orders_DIM-Employee1`
+  CONSTRAINT `DIM-Funcionario`
     FOREIGN KEY (`funcionario`)
     REFERENCES `northwind_dw`.`DIM_Funcionario` (`idFuncionario`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_TF-Orders_DIM-Product1`
+    ON UPDATE CASCADE,
+  CONSTRAINT `DIM-Produto`
     FOREIGN KEY (`produto`)
     REFERENCES `northwind_dw`.`DIM_Produto` (`idProduto`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_TF-Orders_DIM-Customer1`
+    ON UPDATE CASCADE,
+  CONSTRAINT `DIM-Cliente`
     FOREIGN KEY (`cliente`)
     REFERENCES `northwind_dw`.`DIM_Cliente` (`idCliente`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_TF-Orders_DIM-Suppliers1`
+    ON UPDATE CASCADE,
+  CONSTRAINT `DIM-Fornecedor`
     FOREIGN KEY (`fornecedor`)
     REFERENCES `northwind_dw`.`DIM_Fornecedor` (`idFornecedor`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_TF-Encomendas_DIM-Data1`
+    ON UPDATE CASCADE,
+  CONSTRAINT `DIM-Data1`
     FOREIGN KEY (`dataPedido`)
     REFERENCES `northwind_dw`.`DIM_Data` (`idData`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_TF-Encomendas_DIM-Data2`
+    ON UPDATE CASCADE,
+  CONSTRAINT `DIM-Data2`
     FOREIGN KEY (`dataPagamento`)
     REFERENCES `northwind_dw`.`DIM_Data` (`idData`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_TF-Encomendas_DIM-Data3`
+    ON UPDATE CASCADE,
+  CONSTRAINT `DIM-Data3`
     FOREIGN KEY (`dataEnvio`)
     REFERENCES `northwind_dw`.`DIM_Data` (`idData`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_TF-Encomendas_DIM-Expedidor1`
+    ON UPDATE CASCADE,
+  CONSTRAINT `DIM-Expedidor1`
     FOREIGN KEY (`expedidor`)
     REFERENCES `northwind_dw`.`DIM_Expedidor` (`idExpedidor`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
