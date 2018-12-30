@@ -1,0 +1,11 @@
+Na primeira vez em um conjunto de backup é enviado para o servidor, o sistema realiza um backup completo (full). Nas execuções subsequentes, existe a opção de fazer um envio incremental ou diferencial:
+
+- No backup incremental, somente os arquivos novos ou modificados desde a última execução do backup são transmitidos. Neste modelo, o espaço ocupado com o armazenamento dos arquivos é menor, e o tempo para restauração dos dados é maior. (O backup incremental é a indicação para a maioria dos casos. O uso do backup diferencial é recomendado para Perfis de Backup que incluam arquivos grandes e atualizados com freqüência, como bases de dados SQL Server ou MySQL.)
+
+- No backup diferencial, somente os arquivos novos ou modificados desde o último backup completo (full) são transmitidos. Neste modelo, o espaço ocupado com o armazenamento dos arquivos é maior, e o tempo para restauração dos dados é menor.
+
+
+--> Vamos fazer diferencial porque:
+	1) incremental é adequado para quem faz pequenos backups todos os dias, e chega a sabado e pega em todos os pequeninos e junta
+	1.1) corremos o risco de num backup pequenino haver um update num registo, e noutro backup pequenino haver um delete nesse registo
+	2) mais vale, quando fizermos o backup q o prof quer, trazemos TUDO o q foi insert/update... desde o ultimo backup
