@@ -1,5 +1,8 @@
 O que fazer a cada resfrescamento:
 	
-	1) apagar tudo o que se encontra na AR (pentaho: ARcleanup)
+	1) apagar tudo o que se encontra na AR 
+	   (pentaho: ARcleanup)
 	2) copiar todos os dados BD -> AR (pentaho: extraction, está na pasta povoamento inicial, é igual quer seja refrescamento ou povoamento inicial neste caso)
+	   (pentaho: extraction)
 	3) fazer insert/update dos dados AR -> DW (aqui é inserido o que não existe e alterado o que foi modificado na BD original)
+	   (pentaho: backupLoadDW)
