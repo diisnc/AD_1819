@@ -5,7 +5,5 @@ Na primeira vez em um conjunto de backup é enviado para o servidor, o sistema r
 - No backup diferencial, somente os arquivos novos ou modificados desde o último backup completo (full) são transmitidos. Neste modelo, o espaço ocupado com o armazenamento dos arquivos é maior, e o tempo para restauração dos dados é menor.
 
 
---> Vamos fazer diferencial porque:
-	1) incremental é adequado para quem faz pequenos backups todos os dias, e chega a sabado e pega em todos os pequeninos e junta
-	1.1) corremos o risco de num backup pequenino haver um update num registo, e noutro backup pequenino haver um delete nesse registo
-	2) mais vale, quando fizermos o backup q o prof quer, trazemos TUDO o q foi insert/update... desde o ultimo backup
+Escolha Incremental (confirmar com prof se isto é incremental): 1) Cópia BD original -> AR
+																2) Insert/update só dos que foram alterados para DW
