@@ -40,6 +40,17 @@ Due to limited requirement, the business driver that will be analyzed is (...) E
 [EM CONSTRUÇÃO]
 
 
+
+1. What were the total sales in dollars and by unit quantity for all the years and in a particular year, quarter or month? 
+
+2. What were the total sales in dollars and by unit quantity for all the categories of product, each category of product and every particular product in the given year? 
+3. What were the total sales in dollars and by unit quantity for all the categories of product, each category of product and every particular product for all the years, quarters and months? 
+4. What  were  the  total  sales  in  dollars  for  all  the  years,  quarters  and  months  by customer region? 
+5. What were the total sales in dollars made by a particular employee in all the years, in a particular year, quarter or month? 
+6. What was a particular suppliers share in the total sales in dollars in all the years, in a particular year, quarter or month? 
+7. What was a particular shippers share in the total sales in dollars in all the years, in a particular year, quarter or month?
+
+
 ---------------------------------------------------------------------
 EXPLICAÇÃO (ver com eles)
 
