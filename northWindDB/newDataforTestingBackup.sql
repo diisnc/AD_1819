@@ -48,9 +48,27 @@ INSERT INTO orders (employee_id, customer_id, order_date, shipped_date, shipper_
 VALUES (4, 3, '2018-04-25 17:05:10', '2018-10-01 10:33:54', 2, 'Soo Jung Lee', '789 29th Street', 
 	    'Denver', 'CO', '99999', 'USA', 7.0000, 0.0000, 'Credit Card', '2018-04-25 18:10:01', null,
         0, null, 3);
-
-
+        
+  
 -- REVERT #2
 DELETE FROM orders WHERE id = 82;
+ALTER TABLE orders AUTO_INCREMENT = 81; 
 
-select * from orders;
+
+select * from orders; 
+  
+  
+-- é preciso preencher o order_Details também porque é onde está o id produto das orders
+-- processo de extração retira dados da tabela orders e order_details
+-- id é AI: vai ser 92 porque o último na tabela é 91        
+INSERT INTO order_details (order_id, product_id, quantity, unit_price, discount, status_id,
+							date_allocated, purchase_order_id, inventory_id)
+VALUES (82, 34, 100.0000, 14.0000, 0, 2, null, null, null);
+
+
+-- REVERT
+DELETE FROM order_details WHERE id = 92;
+ALTER TABLE order_details AUTO_INCREMENT = 91; 
+
+
+select * from order_details;

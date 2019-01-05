@@ -16,3 +16,5 @@ select * from dim_fornecedor;
 select * from dim_funcionario;
 select * from dim_produto;
 select * from tf_encomendas;
+
+ALTER TABLE tf_encomendas AUTO_INCREMENT = 0; 
