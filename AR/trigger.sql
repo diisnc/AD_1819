@@ -37,20 +37,7 @@ BEGIN
     IF(NEW.expedidor IS NULL)
 	THEN SET NEW.expedidor = 0;
     END IF;
-/*
-	CASE
-    
-    WHEN(NEW.dataPagamento IS NULL)
-	THEN SET NEW.dataPagamento = 0;
-    
-	WHEN(NEW.dataEnvio IS NULL)
-	THEN SET NEW.dataEnvio = 0;
 
-	WHEN(NEW.expedidor IS NULL)
-	THEN SET NEW.expedidor = 0;
-    
-    END CASE;
-*/
 END;
 //
 
