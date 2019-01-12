@@ -549,37 +549,37 @@
     <hop>
       <from>MySQL Input Clientes ARet</from>
       <to>MySQL Output DIM_Cliente</to>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
     </hop>
     <hop>
       <from>MySQL Input Expedidores ARet</from>
       <to>MySQL Output DIM_Expedidor</to>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
     </hop>
     <hop>
       <from>MySQL Input Funcionarios ARet</from>
       <to>MySQL Output DIM_Funcionario</to>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
     </hop>
     <hop>
       <from>MySQL Input Fornecedores ARet</from>
       <to>MySQL Output DIM_Fornecedor</to>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
     </hop>
     <hop>
       <from>MySQL Input Produtos ARet</from>
       <to>MySQL Output DIM_Produto</to>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
     </hop>
     <hop>
       <from>MySQL Input Datas ARet</from>
       <to>MySQL Output DIM_Data</to>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
     </hop>
     <hop>
       <from>MySQL Input Encomendas ARet</from>
       <to>MySQL Output TF_Encomendas</to>
-      <enabled>N</enabled>
+      <enabled>Y</enabled>
     </hop>
   </order>
   <step>

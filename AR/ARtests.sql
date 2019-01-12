@@ -14,4 +14,4 @@ select * from ar_cleanup_expedidor; -- sem nulos
 select * from ar_cleanup_produto; -- com atributos nulos (quantidadeUnidade)
 select * from ar_cleanup_funcionario; -- sem nulos
 select * from ar_cleanup_fornecedor; -- sem nulos
-select * from ar_cleanup_encomendas; -- com atributos nulos (expedidor, dataPagamento, dataEnvio
+select * from ar_cleanup_encomendas; -- com atributos nulos (expedidor, dataPagamento, dataEnvio)
