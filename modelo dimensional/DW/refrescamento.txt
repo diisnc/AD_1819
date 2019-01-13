@@ -1,9 +1,0 @@
-Na primeira vez em um conjunto de backup é enviado para o servidor, o sistema realiza um backup completo (full). Nas execuções subsequentes, existe a opção de fazer um envio incremental ou diferencial:
-
-- No backup incremental, somente os arquivos novos ou modificados desde a última execução do backup são transmitidos. Neste modelo, o espaço ocupado com o armazenamento dos arquivos é menor, e o tempo para restauração dos dados é maior. (O backup incremental é a indicação para a maioria dos casos. O uso do backup diferencial é recomendado para Perfis de Backup que incluam arquivos grandes e atualizados com freqüência, como bases de dados SQL Server ou MySQL.)
-
-- No backup diferencial, somente os arquivos novos ou modificados desde o último backup completo (full) são transmitidos. Neste modelo, o espaço ocupado com o armazenamento dos arquivos é maior, e o tempo para restauração dos dados é menor.
-
-
-Escolha Incremental (confirmar com prof se isto é incremental): 1) Cópia BD original -> AR
-																2) Insert/update só dos que foram alterados para DW

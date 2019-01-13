@@ -952,6 +952,84 @@
         <condition>=</condition>
         <name2 />
       </key>
+      <key>
+        <name>produto</name>
+        <field>produto</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <key>
+        <name>fornecedor</name>
+        <field>fornecedor</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <key>
+        <name>expedidor</name>
+        <field>expedidor</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <key>
+        <name>funcionario</name>
+        <field>funcionario</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <key>
+        <name>cliente</name>
+        <field>cliente</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <key>
+        <name>dataPedido</name>
+        <field>dataPedido</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <key>
+        <name>dataPagamento</name>
+        <field>dataPagamento</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <key>
+        <name>dataEnvio</name>
+        <field>dataEnvio</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <key>
+        <name>quantidade</name>
+        <field>quantidade</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <key>
+        <name>precoTotal</name>
+        <field>precoTotal</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <key>
+        <name>precoUnidade</name>
+        <field>precoUnidade</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <key>
+        <name>precoEnvio</name>
+        <field>precoEnvio</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <key>
+        <name>desconto</name>
+        <field>desconto</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
       <value>
         <name>idOrder</name>
         <rename>idOrder</rename>

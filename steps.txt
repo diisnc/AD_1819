@@ -25,3 +25,7 @@ Passo a passo:
 				4.1.2 - adicionar encomenda (+ revert)
 				4.1.3 - adicionar encomenda details (+ revert) (info da encomenda está nas duas tabelas da BD northwind)
 		4.2 - REPETIR PASSO 3
+
+
+Nota: Explicação refrescamento
+O nosso refrescamento é diferencial porque passa tudo para AR e incremental porque só vai o que foi alterado para o DW
