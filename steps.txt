@@ -9,6 +9,7 @@ Passo a passo:
 		2.3 - executar últimos dois comandos do trigger (para inserir um registo que conhece os 'desconhecido' e os coloca com a mesma chave)
 		2.4 - (pôr o AI do dw a 0 (ficheiro dwtestes))
 		2.5 - executar transformação loadDW (passa dados tratados AR -> DW) -> 1º dimensoes, 2º factos
+			(NOTA: poderia ser utilizado o backupLoadDW, porque no povoamento inicial só faria inserts)
 
 
 
